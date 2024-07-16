@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Predição de Doença de Chagas</title>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Inteligência Artificial para Predição de Doença de Chagas</h1>
+        <p class="mb-4 text-gray-700">Este modelo não foi testado em ensaios clínicos e, portanto, é passível de falhas. Use os resultados com cautela.</p>
+        <form method="POST">
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="EDEMA" value="1" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Edema</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="MENINGOE" value="1" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Meningoencefalite</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="POLIADENO" value="1" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Poliadenopatia</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="FEBRE" value="1" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Febre</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="HEPATOME" value="1" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Hepatomegalia</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="SINAIS_ICC" value="1" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Sinais de ICC</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="ARRITMIAS" value="1" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Arritmias</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="ASTENIA" value="1" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Astenia</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="ESPLENOM" value="1" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Esplenomegalia</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="CHAGOMA" value="1" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Lesão sugestiva de chagoma</span>
+                </label>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Enviar</button>
+        </form>
+        {% if prob is not none %}
+            <div class="mt-6">
+                <h2 class="text-xl font-bold">Resultado:</h2>
+                <p class="text-gray-700">Probabilidade de Doença de Chagas: {{ prob|round(2) }}</p>
+                <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfico de Probabilidade">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
