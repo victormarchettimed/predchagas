@@ -1,1 +1,7 @@
-"Flask\njoblib\nnumpy\nmatplotlib\nscikit-learn\nimbalanced-learn\ngunicorn" 
+Flask
+joblib
+numpy
+matplotlib
+scikit-learn
+imbalanced-learn
+gunicorn
